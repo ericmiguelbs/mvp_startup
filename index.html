@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YieldBet - A BET do bem</title>
+  <title>YieldBet - Fintech de Reabilitação Financeira Gamificada</title>
   <!-- Tailwind CSS & FontAwesome -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -32,7 +32,7 @@
 <body class="bg-brand-dark text-slate-100 min-h-screen font-sans antialiased flex flex-col">
 
   <!-- ========================================== -->
-  <!-- 1. TELA DE LOGIN & ONBOARDING (INICIAL)     -->
+  <!-- 1. TELA DE LOGIN & ONBOARDING              -->
   <!-- ========================================== -->
   <section id="viewLogin" class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-b from-brand-dark via-slate-900 to-black">
     <div class="max-w-md w-full bg-brand-card border border-brand-border rounded-2xl p-8 shadow-2xl space-y-6">
@@ -43,34 +43,28 @@
           <i class="fa-solid fa-shield-halved"></i>
         </div>
         <h1 class="text-2xl font-black text-white">Yield<span class="text-brand-green">Bet</span></h1>
-        <p class="text-xs text-slate-400">A BET do bem</p>
+        <p class="text-xs text-slate-400">Fintech de Reabilitação Financeira Gamificada</p>
       </div>
 
       <!-- Banner de Garantia -->
       <div class="bg-emerald-950/40 border border-brand-green/30 rounded-xl p-3 text-xs text-emerald-200 text-center">
-        🛡️ <strong>Capital 100% Protegido:</strong> Aqui seu palpite rende 100% do CDI e nunca vira prejuízo.
+        🛡️ <strong>Capital 100% Protegido:</strong> Substitua o vício em apostas por poupança remunerada a 100% do CDI.
       </div>
 
-      <!-- Formulário de Login / Onboarding -->
+      <!-- Formulário de Entrada -->
       <form id="formLogin" class="space-y-4" onsubmit="realizarLogin(event)">
         <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Nome Completo</label>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Nome do Usuário</label>
           <input type="text" id="loginName" value="Givanildo da Silva" required class="w-full bg-slate-900 border border-brand-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-green">
         </div>
 
         <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Telefone / Chave Pix</label>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Telefone / WhatsApp</label>
           <input type="text" id="loginPhone" value="(11) 98765-4321" required class="w-full bg-slate-900 border border-brand-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-green">
         </div>
 
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Aporte Inicial Protegido (R$)</label>
-          <input type="number" id="loginDeposit" value="250" min="20" required class="w-full bg-slate-900 border border-brand-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-green">
-          <span class="text-[11px] text-slate-400 mt-1 block">Esse valor será guardado na sua conta com rendimento CDI.</span>
-        </div>
-
         <button type="submit" class="w-full py-3 bg-brand-green hover:bg-emerald-500 text-brand-dark font-extrabold rounded-xl text-sm transition shadow-lg shadow-brand-green/20">
-          Entrar e Ativar Proteção <i class="fa-solid fa-arrow-right ml-1"></i>
+          Acessar Plataforma <i class="fa-solid fa-arrow-right ml-1"></i>
         </button>
       </form>
 
@@ -81,11 +75,11 @@
   </section>
 
   <!-- ========================================== -->
-  <!-- 2. AMBIENTE AUTENTICADO (NAVBAR + TELAS)    -->
+  <!-- 2. AMBIENTE AUTENTICADO                    -->
   <!-- ========================================== -->
   <div id="viewApp" class="hidden flex-1 flex flex-col md:flex-row">
     
-    <!-- Sidebar / Menu de Navegação -->
+    <!-- Sidebar -->
     <aside class="w-full md:w-64 bg-brand-sidebar border-b md:border-b-0 md:border-r border-brand-border p-5 flex flex-col justify-between">
       <div class="space-y-6">
         <!-- Brand -->
@@ -95,9 +89,14 @@
           </div>
           <div>
             <h2 class="text-lg font-black tracking-wide text-white">Yield<span class="text-brand-green">Bet</span></h2>
-            <span class="text-[10px] text-slate-400 uppercase font-semibold">CONTA PROTEGIDA</span>
+            <span class="text-[10px] text-slate-400 uppercase font-semibold">Conta Protegida</span>
           </div>
         </div>
+
+        <!-- Botão Destaque: Depositar -->
+        <button onclick="abrirModalDeposito()" class="w-full py-2.5 px-3 bg-emerald-500/10 hover:bg-emerald-500/20 border border-brand-green text-brand-green font-bold text-xs rounded-xl flex items-center justify-center gap-2 transition">
+          <i class="fa-solid fa-money-bill-transfer"></i> Simular Depósito Pix
+        </button>
 
         <!-- Menu Links -->
         <nav class="space-y-1">
@@ -116,7 +115,7 @@
         </nav>
       </div>
 
-      <!-- User Card & Sair -->
+      <!-- User Card -->
       <div class="pt-6 border-t border-brand-border mt-6">
         <div class="flex items-center justify-between mb-3">
           <div>
@@ -128,12 +127,12 @@
           </button>
         </div>
         <div class="bg-slate-900/60 rounded-lg p-2 text-[11px] text-slate-400 text-center">
-          100% CDI Diário Ativo
+          100% CDI Líquido Diário
         </div>
       </div>
     </aside>
 
-    <!-- Área Principal de Conteúdo -->
+    <!-- Conteúdo Principal -->
     <main class="flex-1 p-6 md:p-8 overflow-y-auto space-y-6">
 
       <!-- ===================================== -->
@@ -141,19 +140,23 @@
       <!-- ===================================== -->
       <section id="tabDashboard" class="tab-content active space-y-6">
         
-        <!-- Boas-vindas e Impacto -->
         <div class="bg-gradient-to-r from-emerald-950/40 via-brand-card to-brand-card border border-brand-green/30 rounded-2xl p-6 relative overflow-hidden">
           <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div>
-              <span class="text-xs font-bold text-brand-green uppercase tracking-wider">Painel de Reabilitação</span>
-              <h2 class="text-2xl font-black text-white mt-1">Bem-vindo, <span id="dashGreetingName">Givanildo</span>!</h2>
+              <span class="text-xs font-bold text-brand-green uppercase tracking-wider">Painel de Reabilitação Financeira</span>
+              <h2 class="text-2xl font-black text-white mt-1">Olá, <span id="dashGreetingName">Givanildo</span>!</h2>
               <p class="text-sm text-slate-300 mt-1 max-w-xl">
-                Seu dinheiro está trabalhando para o seu futuro. Cada palpite registrado continua intacto no seu bolso rendendo juros.
+                Deposite e dê seus palpites de futebol. O dinheiro depositado nunca é perdido: ele vira poupança rendendo 100% do CDI.
               </p>
             </div>
-            <button onclick="navegarPara('tabPalpites')" class="px-5 py-3 bg-brand-green hover:bg-emerald-500 text-brand-dark font-black rounded-xl text-sm transition shadow-lg shadow-brand-green/20">
-              <i class="fa-solid fa-plus-circle mr-1"></i> Fazer Palpite Sem Perda
-            </button>
+            <div class="flex items-center gap-3">
+              <button onclick="abrirModalDeposito()" class="px-4 py-3 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-bold rounded-xl text-sm transition">
+                <i class="fa-solid fa-plus mr-1"></i> Depositar
+              </button>
+              <button onclick="navegarPara('tabPalpites')" class="px-5 py-3 bg-brand-green hover:bg-emerald-500 text-brand-dark font-black rounded-xl text-sm transition shadow-lg shadow-brand-green/20">
+                Palpitar Sem Perda
+              </button>
+            </div>
           </div>
         </div>
 
@@ -161,7 +164,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
           <div class="bg-brand-card border border-brand-border p-5 rounded-2xl">
             <div class="flex items-center justify-between text-slate-400 text-xs font-bold uppercase">
-              <span>Saldo Protegido</span>
+              <span>Saldo Protegido na Conta</span>
               <i class="fa-solid fa-vault text-brand-green text-lg"></i>
             </div>
             <div class="text-3xl font-extrabold text-white mt-2" id="metricSaldo">R$ 0,00</div>
@@ -176,16 +179,16 @@
               <i class="fa-solid fa-chart-line text-emerald-400 text-lg"></i>
             </div>
             <div class="text-3xl font-extrabold text-emerald-400 mt-2" id="metricRendimento">+ R$ 0,00</div>
-            <p class="text-xs text-slate-400 mt-2">Rentabilidade líquida diária</p>
+            <p class="text-xs text-slate-400 mt-2">Rentabilidade líquida simulada</p>
           </div>
 
           <div class="bg-brand-card border border-brand-border p-5 rounded-2xl">
             <div class="flex items-center justify-between text-slate-400 text-xs font-bold uppercase">
-              <span>Capital Salvo das Bets</span>
+              <span>Total Salvo das Apostas</span>
               <i class="fa-solid fa-shield-cat text-amber-400 text-lg"></i>
             </div>
             <div class="text-3xl font-extrabold text-amber-400 mt-2" id="metricSalvo">R$ 0,00</div>
-            <p class="text-xs text-slate-400 mt-2">Valor que iria para as casas de aposta</p>
+            <p class="text-xs text-slate-400 mt-2">Patrimônio protegido e retido</p>
           </div>
         </div>
 
@@ -193,13 +196,11 @@
         <div class="bg-brand-card border border-brand-border rounded-2xl p-6 space-y-4">
           <div class="flex justify-between items-center">
             <h3 class="text-base font-bold text-white flex items-center gap-2">
-              <i class="fa-solid fa-clock-rotate-left text-brand-green"></i> Palpites Recentes (Capital Preservado)
+              <i class="fa-solid fa-clock-rotate-left text-brand-green"></i> Palpites Recentes
             </h3>
-            <button onclick="navegarPara('tabPalpites')" class="text-xs text-brand-green hover:underline">Ver jogos</button>
+            <button onclick="navegarPara('tabPalpites')" class="text-xs text-brand-green hover:underline">Ver todas partidas</button>
           </div>
-          <div id="recentBetsList" class="space-y-2">
-            <!-- Injetado via JS -->
-          </div>
+          <div id="recentBetsList" class="space-y-2"></div>
         </div>
 
       </section>
@@ -208,14 +209,17 @@
       <!-- ABA 2: JOGOS & PALPITES               -->
       <!-- ===================================== -->
       <section id="tabPalpites" class="tab-content space-y-6">
-        <div>
-          <h2 class="text-xl font-bold text-white">Partidas Disponíveis para Palpite</h2>
-          <p class="text-xs text-slate-400">Escolha o seu palpite. O valor que você digitar será adicionado à sua poupança protegida!</p>
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="text-xl font-bold text-white">Partidas do Brasileirão & Internacionais</h2>
+            <p class="text-xs text-slate-400">Escolha o seu palpite. Seu saldo continua seguro e você acumula pontos de recompensas.</p>
+          </div>
+          <button onclick="abrirModalDeposito()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-brand-green rounded-xl text-xs font-bold">
+            <i class="fa-solid fa-wallet mr-1"></i> Fazer Depósito Pix
+          </button>
         </div>
 
-        <div id="gridMatches" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <!-- Injetado via JS -->
-        </div>
+        <div id="gridMatches" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
       </section>
 
       <!-- ===================================== -->
@@ -223,42 +227,38 @@
       <!-- ===================================== -->
       <section id="tabRendimentos" class="tab-content space-y-6">
         <div>
-          <h2 class="text-xl font-bold text-white">Extrato de Rendimento & Proteção</h2>
-          <p class="text-xs text-slate-400">Transparência total sobre a evolução do seu patrimônio contra o vício de apostas.</p>
+          <h2 class="text-xl font-bold text-white">Extrato de Movimentações & CDI</h2>
+          <p class="text-xs text-slate-400">Acompanhe todos os seus depósitos, palpites protegidos e juros acumulados.</p>
         </div>
 
-        <!-- Comparativo Visual -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="bg-emerald-950/20 border border-brand-green/30 rounded-2xl p-5">
-            <span class="text-xs font-bold text-brand-green uppercase">Cenário com YieldBet</span>
+            <span class="text-xs font-bold text-brand-green uppercase">Patrimônio com a YieldBet</span>
             <div class="text-2xl font-black text-white mt-2" id="reportYieldTotal">R$ 0,00</div>
-            <p class="text-xs text-slate-300 mt-2">100% do dinheiro investido nos palpites permanece seu e remunerado.</p>
+            <p class="text-xs text-slate-300 mt-2">Depósitos + rendimentos permanecem sempre com você.</p>
           </div>
 
           <div class="bg-red-950/20 border border-red-500/30 rounded-2xl p-5">
-            <span class="text-xs font-bold text-red-400 uppercase">Cenário em Bets Tradicionais</span>
+            <span class="text-xs font-bold text-red-400 uppercase">Se estivesse em Bets Convencionais</span>
             <div class="text-2xl font-black text-red-400 mt-2">R$ 0,00</div>
-            <p class="text-xs text-slate-300 mt-2">Nas plataformas comuns, 100% dos palpites errados são perdidos para a banca.</p>
+            <p class="text-xs text-slate-300 mt-2">Casas de apostas retêm 100% dos palpites incorretos.</p>
           </div>
         </div>
 
-        <!-- Tabela Histórico -->
         <div class="bg-brand-card border border-brand-border rounded-2xl overflow-hidden">
-          <div class="p-4 border-b border-brand-border font-bold text-sm text-white">Histórico de Transações de Reabilitação</div>
+          <div class="p-4 border-b border-brand-border font-bold text-sm text-white">Extrato Detalhado de Transações</div>
           <div class="overflow-x-auto">
             <table class="w-full text-left text-xs">
               <thead class="bg-slate-900/60 text-slate-400 uppercase text-[10px]">
                 <tr>
                   <th class="p-3">Data</th>
-                  <th class="p-3">Operação</th>
+                  <th class="p-3">Tipo</th>
                   <th class="p-3">Destino</th>
                   <th class="p-3">Valor</th>
                   <th class="p-3">Status</th>
                 </tr>
               </thead>
-              <tbody id="transactionsTableBody" class="divide-y divide-brand-border">
-                <!-- Injetado via JS -->
-              </tbody>
+              <tbody id="transactionsTableBody" class="divide-y divide-brand-border"></tbody>
             </table>
           </div>
         </div>
@@ -270,29 +270,72 @@
       <section id="tabRecompensas" class="tab-content space-y-6">
         <div class="flex justify-between items-center">
           <div>
-            <h2 class="text-xl font-bold text-white">Loja de Vantagens e Parcerias</h2>
-            <p class="text-xs text-slate-400">Troque os pontos que você ganhou fazendo palpites por benefícios do dia a dia.</p>
+            <h2 class="text-xl font-bold text-white">Loja de Benefícios e Parcerias</h2>
+            <p class="text-xs text-slate-400">Troque os pontos acumulados nos palpites por vouchers de consumo real.</p>
           </div>
           <div class="bg-brand-card px-4 py-2 rounded-xl border border-brand-border text-sm font-bold text-amber-400" id="rewardsPointsCounter">
             ⭐ 350 Pontos
           </div>
         </div>
 
-        <div id="gridRewards" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <!-- Injetado via JS -->
-        </div>
+        <div id="gridRewards" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
       </section>
 
     </main>
   </div>
 
   <!-- ========================================== -->
-  <!-- MODAL: FAZER PALPITE COM VALOR             -->
+  <!-- MODAL 1: SIMULAÇÃO DE DEPÓSITO PIX        -->
   <!-- ========================================== -->
-  <div id="modalBet" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+  <div id="modalDeposito" class="hidden fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-brand-card border border-brand-border max-w-md w-full rounded-2xl p-6 space-y-4 shadow-2xl">
+      <div class="flex justify-between items-center">
+        <h3 class="text-base font-bold text-white flex items-center gap-2">
+          <i class="fa-brands fa-pix text-emerald-400"></i> Simular Depósito em Conta CDI
+        </h3>
+        <button onclick="fecharModalDeposito()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="bg-emerald-950/30 border border-brand-green/30 p-3 rounded-xl text-xs text-emerald-200">
+        Todo valor depositado vai direto para a sua conta sob custódia rendendo 100% do CDI, sem taxas de administração.
+      </div>
+
+      <!-- Valores pré-definidos -->
+      <div>
+        <label class="block text-xs font-semibold text-slate-300 mb-2">Selecione ou digite o valor</label>
+        <div class="grid grid-cols-4 gap-2 mb-3">
+          <button onclick="setValorDeposito(30)" class="py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-lg text-xs font-bold text-white">R$ 30</button>
+          <button onclick="setValorDeposito(50)" class="py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-lg text-xs font-bold text-white">R$ 50</button>
+          <button onclick="setValorDeposito(100)" class="py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-lg text-xs font-bold text-white">R$ 100</button>
+          <button onclick="setValorDeposito(200)" class="py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-lg text-xs font-bold text-white">R$ 200</button>
+        </div>
+        <input type="number" id="inputValorDeposito" value="100" min="10" class="w-full bg-slate-900 border border-brand-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-green">
+      </div>
+
+      <!-- Simulação Chave Pix Copia e Cola -->
+      <div class="p-3 bg-slate-900 rounded-xl text-xs space-y-2 border border-slate-700">
+        <span class="text-slate-400 block font-semibold">Chave Pix Copia e Cola (Simulada):</span>
+        <div class="bg-black/50 p-2 rounded text-[11px] font-mono text-emerald-400 break-all select-all">
+          00020126580014br.gov.bcb.pix0136yieldbet-pld-cdi-994829105204000053039865802BR
+        </div>
+      </div>
+
+      <div class="flex gap-2 pt-2">
+        <button onclick="fecharModalDeposito()" class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold">Cancelar</button>
+        <button onclick="confirmarDeposito()" class="flex-1 py-2.5 bg-brand-green hover:bg-emerald-500 text-brand-dark rounded-xl text-xs font-extrabold flex items-center justify-center gap-1">
+          <i class="fa-solid fa-check"></i> Confirmar Pix
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL 2: PALPITE COM VALOR                -->
+  <!-- ========================================== -->
+  <div id="modalBet" class="hidden fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-center justify-center p-4">
     <div class="bg-brand-card border border-brand-border max-w-sm w-full rounded-2xl p-6 space-y-4 shadow-2xl">
       <div class="flex justify-between items-center">
-        <h3 class="text-base font-bold text-white">Confirmar Palpite Seguro</h3>
+        <h3 class="text-base font-bold text-white">Registrar Palpite Seguro</h3>
         <button onclick="fecharModalBet()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
       </div>
 
@@ -302,29 +345,28 @@
       </div>
 
       <div>
-        <label class="block text-xs font-semibold text-slate-300 mb-1">Valor do Aporte Poupança (R$)</label>
+        <label class="block text-xs font-semibold text-slate-300 mb-1">Valor do Palpite (R$)</label>
         <input type="number" id="modalBetValue" value="50" min="10" class="w-full bg-slate-900 border border-brand-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-green">
-        <span class="text-[11px] text-brand-green mt-1 block">🛡️ Esse dinheiro NÃO será perdido. Ele será guardado na sua conta.</span>
+        <span class="text-[11px] text-brand-green mt-1 block">🛡️ O saldo não é perdido! O valor permanece em sua conta rendendo CDI.</span>
       </div>
 
       <div class="flex gap-2">
         <button onclick="fecharModalBet()" class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold">Cancelar</button>
-        <button onclick="confirmarPalpite()" class="flex-1 py-2.5 bg-brand-green hover:bg-emerald-500 text-brand-dark rounded-xl text-xs font-extrabold">Confirmar</button>
+        <button onclick="confirmarPalpite()" class="flex-1 py-2.5 bg-brand-green hover:bg-emerald-500 text-brand-dark rounded-xl text-xs font-extrabold">Confirmar Palpite</button>
       </div>
     </div>
   </div>
 
   <!-- ========================================== -->
-  <!-- JAVASCRIPT: ESTADO E CONTROLE GLOBAL       -->
+  <!-- JAVASCRIPT: ESTADO E CONTROLES             -->
   <!-- ========================================== -->
   <script>
-    // Estado Mockado da Aplicação
     const state = {
       user: {
         nome: "Givanildo",
         telefone: "(11) 98765-4321",
-        saldoAportado: 0,
-        rendimentoCDI: 0,
+        saldoAportado: 150.00, // Saldo inicial para teste
+        rendimentoCDI: 2.15,
         pontos: 350
       },
       selectedBet: null,
@@ -337,7 +379,9 @@
       betsHistory: [
         { id: 1, partida: "Palmeiras x Corinthians", palpite: "Palmeiras", valor: 50.00, data: "Hoje às 14:20" }
       ],
-      transactions: [],
+      transactions: [
+        { data: "Hoje", tipo: "Depósito Pix (Aporte)", destino: "Conta 100% CDI", valor: 150.00, status: "Creditado" }
+      ],
       rewards: [
         { id: 1, title: "Cupom R$ 20 iFood", parceiro: "iFood", custo: 200, icon: "fa-utensils" },
         { id: 2, title: "Vale R$ 25 Combustível", parceiro: "Shell Box", custo: 300, icon: "fa-gas-pump" },
@@ -350,7 +394,6 @@
       return val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     }
 
-    // Navegação entre Telas/Abas
     function navegarPara(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
       document.getElementById(tabId).classList.add('active');
@@ -373,28 +416,11 @@
       }
     }
 
-    // Fluxo de Login / Onboarding
     function realizarLogin(e) {
       e.preventDefault();
-      const nome = document.getElementById('loginName').value;
-      const fone = document.getElementById('loginPhone').value;
-      const aporte = parseFloat(document.getElementById('loginDeposit').value) || 0;
+      state.user.nome = document.getElementById('loginName').value;
+      state.user.telefone = document.getElementById('loginPhone').value;
 
-      state.user.nome = nome;
-      state.user.telefone = fone;
-      state.user.saldoAportado = aporte;
-      state.user.rendimentoCDI = aporte * 0.0035; // Rendimento inicial mockado
-
-      // Transação inicial
-      state.transactions.push({
-        data: "Hoje",
-        tipo: "Aporte Inicial Garantido",
-        destino: "Conta Poupança CDI",
-        valor: aporte,
-        status: "Seguro"
-      });
-
-      // Alterna para tela principal
       document.getElementById('viewLogin').classList.add('hidden');
       document.getElementById('viewApp').classList.remove('hidden');
 
@@ -406,7 +432,42 @@
       document.getElementById('viewLogin').classList.remove('hidden');
     }
 
-    // Modal de Palpites
+    // Controle Modal Depósito
+    function abrirModalDeposito() {
+      document.getElementById('modalDeposito').classList.remove('hidden');
+    }
+
+    function fecharModalDeposito() {
+      document.getElementById('modalDeposito').classList.add('hidden');
+    }
+
+    function setValorDeposito(val) {
+      document.getElementById('inputValorDeposito').value = val;
+    }
+
+    function confirmarDeposito() {
+      const valor = parseFloat(document.getElementById('inputValorDeposito').value) || 0;
+      if (valor <= 0) return alert("Digite um valor de depósito válido.");
+
+      state.user.saldoAportado += valor;
+      state.user.rendimentoCDI += (valor * 0.0008); // Juros simulados imediatos
+      state.user.pontos += 20; // Bônus de aporte consciente
+
+      state.transactions.unshift({
+        data: "Agora mesmo",
+        tipo: "Depósito Pix (Aporte)",
+        destino: "Conta 100% CDI",
+        valor: valor,
+        status: "Creditado"
+      });
+
+      fecharModalDeposito();
+      atualizarInterface();
+
+      alert(`✅ Depósito Pix Confirmado!\n\nValor: ${formatBRL(valor)}\nDestino: Conta Segura CDI\nSeu saldo já está rendendo juros e protegido contra perdas.`);
+    }
+
+    // Controle Modal Palpite
     function abrirModalBet(matchId, pick) {
       const match = state.matches.find(m => m.id === matchId);
       state.selectedBet = { match, pick };
@@ -424,24 +485,23 @@
       const val = parseFloat(document.getElementById('modalBetValue').value) || 0;
       if (val <= 0) return alert("Digite um valor válido.");
 
-      // Regra de Negócio: Saldo é SOMADO, rendimento sobe e ganha pontos
+      // Regra de Ouro: o dinheiro NUNCA é perdido, apenas alocado e rende juros
       state.user.saldoAportado += val;
-      state.user.rendimentoCDI += (val * 0.0015);
+      state.user.rendimentoCDI += (val * 0.0012);
       state.user.pontos += 50;
 
-      const newBet = {
+      state.betsHistory.unshift({
         id: Date.now(),
         partida: `${state.selectedBet.match.casa} vs ${state.selectedBet.match.fora}`,
         palpite: state.selectedBet.pick,
         valor: val,
         data: "Agora mesmo"
-      };
-      state.betsHistory.unshift(newBet);
+      });
 
       state.transactions.unshift({
-        data: "Agora",
-        tipo: `Palpite Seguro: ${state.selectedBet.pick}`,
-        destino: "Conta Poupança CDI",
+        data: "Agora mesmo",
+        tipo: `Palpite: ${state.selectedBet.pick}`,
+        destino: "Conta 100% CDI",
         valor: val,
         status: "Preservado"
       });
@@ -449,79 +509,64 @@
       fecharModalBet();
       atualizarInterface();
 
-      alert(`🎉 Palpite Confirmado!\n\n🛡️ Segurança: Os ${formatBRL(val)} foram adicionados ao seu saldo protegido a 100% do CDI. Você nunca perde esse dinheiro!`);
+      alert(`🎉 Palpite Confirmado em [${state.selectedBet.pick}]!\n\n🛡️ Segurança: Os ${formatBRL(val)} foram somados à sua conta rendendo CDI. Risco de perda: 0%!`);
     }
 
     function resgatarCupom(custo, title) {
       if (state.user.pontos >= custo) {
         state.user.pontos -= custo;
         atualizarInterface();
-        alert(`🎁 Recompensa Resgatada!\n\nCupom: ${title}\nCódigo: YIELD-${Math.floor(1000 + Math.random() * 9000)}\nMostre na tela do parceiro para usar.`);
+        alert(`🎁 Recompensa Resgatada!\n\nCupom: ${title}\nCódigo: YIELD-${Math.floor(1000 + Math.random() * 9000)}`);
       } else {
-        alert("Pontos insuficientes! Faça mais palpites sem risco para acumular pontos.");
+        alert("Pontos insuficientes! Realize depósitos e palpites para acumular mais pontos.");
       }
     }
 
-    // Atualização de Renders
     function atualizarInterface() {
-      // Header & Perfil
       document.getElementById('profileName').innerText = state.user.nome;
       document.getElementById('dashGreetingName').innerText = state.user.nome;
       document.getElementById('profilePoints').innerText = `⭐ ${state.user.pontos} pts`;
       document.getElementById('rewardsPointsCounter').innerText = `⭐ ${state.user.pontos} Pontos`;
 
-      // Métricas Dashboard
       document.getElementById('metricSaldo').innerText = formatBRL(state.user.saldoAportado);
       document.getElementById('metricRendimento').innerText = `+ ${formatBRL(state.user.rendimentoCDI)}`;
       document.getElementById('metricSalvo').innerText = formatBRL(state.user.saldoAportado);
       document.getElementById('reportYieldTotal').innerText = formatBRL(state.user.saldoAportado + state.user.rendimentoCDI);
 
-      // Render Palpites Recentes
+      // Render Palpites
       const recentContainer = document.getElementById('recentBetsList');
-      if (state.betsHistory.length === 0) {
-        recentContainer.innerHTML = `<p class="text-xs text-slate-400">Nenhum palpite recente.</p>`;
-      } else {
-        recentContainer.innerHTML = state.betsHistory.slice(0, 3).map(b => `
-          <div class="bg-slate-900/60 p-3 rounded-xl flex justify-between items-center text-xs">
-            <div>
-              <span class="font-bold text-white">${b.partida}</span>
-              <span class="text-slate-400 block text-[11px]">Escolha: <strong class="text-brand-green">${b.palpite}</strong> • ${b.data}</span>
-            </div>
-            <div class="text-right">
-              <span class="font-extrabold text-white">${formatBRL(b.valor)}</span>
-              <span class="text-[10px] text-brand-green block font-semibold">100% Guardado</span>
-            </div>
+      recentContainer.innerHTML = state.betsHistory.slice(0, 3).map(b => `
+        <div class="bg-slate-900/60 p-3 rounded-xl flex justify-between items-center text-xs">
+          <div>
+            <span class="font-bold text-white">${b.partida}</span>
+            <span class="text-slate-400 block text-[11px]">Palpite: <strong class="text-brand-green">${b.palpite}</strong> • ${b.data}</span>
           </div>
-        `).join('');
-      }
+          <div class="text-right">
+            <span class="font-extrabold text-white">${formatBRL(b.valor)}</span>
+            <span class="text-[10px] text-brand-green block font-semibold">100% Protegido</span>
+          </div>
+        </div>
+      `).join('');
 
-      // Render Cards de Partidas
+      // Render Partidas
       document.getElementById('gridMatches').innerHTML = state.matches.map(m => `
         <div class="bg-brand-card border border-brand-border p-5 rounded-2xl space-y-4">
           <div class="flex justify-between items-center text-xs text-slate-400">
             <span><i class="fa-solid fa-trophy text-amber-400 mr-1"></i> ${m.camp}</span>
             <span>${m.horario}</span>
           </div>
-
           <div class="text-center py-2">
             <h4 class="text-base font-bold text-white">${m.casa} <span class="text-brand-green text-xs font-normal px-2">X</span> ${m.fora}</h4>
           </div>
-
           <div class="grid grid-cols-3 gap-2">
-            <button onclick="abrirModalBet(${m.id}, '${m.casa}')" class="py-2.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-xl text-xs font-bold text-white transition text-center">
-              ${m.casa}
-            </button>
-            <button onclick="abrirModalBet(${m.id}, 'Empate')" class="py-2.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-xl text-xs font-bold text-white transition text-center">
-              Empate
-            </button>
-            <button onclick="abrirModalBet(${m.id}, '${m.fora}')" class="py-2.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-xl text-xs font-bold text-white transition text-center">
-              ${m.fora}
-            </button>
+            <button onclick="abrirModalBet(${m.id}, '${m.casa}')" class="py-2.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-xl text-xs font-bold text-white transition text-center">${m.casa}</button>
+            <button onclick="abrirModalBet(${m.id}, 'Empate')" class="py-2.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-xl text-xs font-bold text-white transition text-center">Empate</button>
+            <button onclick="abrirModalBet(${m.id}, '${m.fora}')" class="py-2.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-xl text-xs font-bold text-white transition text-center">${m.fora}</button>
           </div>
         </div>
       `).join('');
 
-      // Render Histórico Extrato
+      // Render Extrato
       document.getElementById('transactionsTableBody').innerHTML = state.transactions.map(t => `
         <tr class="hover:bg-slate-900/40">
           <td class="p-3 text-slate-400">${t.data}</td>
@@ -546,9 +591,7 @@
           </div>
           <div class="flex justify-between items-center pt-2 border-t border-brand-border">
             <span class="text-xs font-bold text-amber-400">⭐ ${r.custo} pts</span>
-            <button onclick="resgatarCupom(${r.custo}, '${r.title}')" class="px-3 py-1.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 rounded-lg text-xs font-bold transition">
-              Resgatar
-            </button>
+            <button onclick="resgatarCupom(${r.custo}, '${r.title}')" class="px-3 py-1.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 rounded-lg text-xs font-bold transition">Resgatar</button>
           </div>
         </div>
       `).join('');
